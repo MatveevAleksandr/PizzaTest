@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MainBottomNavigation" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/primary_bottom_nav</item>
+    </style>
+</resources>

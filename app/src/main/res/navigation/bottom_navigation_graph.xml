@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_navigation_graph"
+    app:startDestination="@id/navigation_main">
+
+    <fragment
+        android:id="@+id/navigation_main"
+        android:name="com.hammersystems.myapplication.pages.main_menu.ui.MainFragment"
+        tools:layout="@layout/fragment_main_menu_page" />
+
+    <fragment
+        android:id="@+id/navigation_account"
+        android:name="com.hammersystems.myapplication.pages.account.ui.AccountFragment"
+        tools:layout="@layout/fragment_account_page" />
+
+    <fragment
+        android:id="@+id/navigation_bag"
+        android:name="com.hammersystems.myapplication.pages.bag.ui.BagFragment"
+        tools:layout="@layout/fragment_bag_page" />
+
+</navigation>
