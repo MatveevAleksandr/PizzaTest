@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.hammersystems.domain.model.BannerModel
+import com.hammersystems.domain.model.BannerItemModel
 import com.hammersystems.myapplication.R
 
 class BannerRecyclerAdapter(
-    private val bannerList: List<BannerModel>, private val bannerClick: () -> Unit
+    private val bannerList: List<BannerItemModel>, private val bannerClick: (BannerItemModel) -> Unit
 ) : RecyclerView.Adapter<BannerRecyclerAdapter.BannerViewHolder>() {
     class BannerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val bannerImage: ImageView = itemView.findViewById(R.id.banner_image)
@@ -26,7 +26,7 @@ class BannerRecyclerAdapter(
     override fun onBindViewHolder(holder: BannerViewHolder, position: Int) {
         holder.bannerImage.setImageResource(bannerList[position].imageRes)
         holder.bannerCard.setOnClickListener {
-            bannerClick
+            bannerClick(bannerList[position])
         }
     }
 

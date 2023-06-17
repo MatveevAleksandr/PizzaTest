@@ -4,4 +4,7 @@
     <string name="bottom_nav_account_menu_title">Профиль</string>
     <string name="bottom_nav_bag_menu_title">Корзина</string>
     <string name="city_label">Москва</string>
+    <string name="meal_label">Some meal</string>
+    <string name="meal_description">Some description</string>
+    <string name="menu_item_price">Price</string>
 </resources>

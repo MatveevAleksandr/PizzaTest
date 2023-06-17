@@ -1,7 +1,7 @@
 package com.hammersystems.domain.repository
 
-import com.hammersystems.domain.model.BannerModel
+import com.hammersystems.domain.model.BannerItemModel
 
 interface BannerRepository {
-    fun getAll(): List<BannerModel>
+    fun getAll(): List<BannerItemModel>
 }

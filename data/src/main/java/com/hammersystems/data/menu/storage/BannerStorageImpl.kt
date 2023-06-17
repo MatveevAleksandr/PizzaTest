@@ -1,12 +1,12 @@
 package com.hammersystems.data.menu.storage
 
 import com.hammersystems.data.R
-import com.hammersystems.domain.model.BannerModel
+import com.hammersystems.domain.model.BannerItemModel
 
 class BannerStorageImpl(): BannerStorage {
-    override fun getAll(): List<BannerModel>{
+    override fun getAll(): List<BannerItemModel>{
         return List(5 ){
-            BannerModel(R.drawable.banner)
+            BannerItemModel(R.drawable.banner)
         }
     }
 }

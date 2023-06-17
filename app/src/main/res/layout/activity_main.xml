@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#FBFBFB">
 
     <fragment
         android:id="@+id/navigation_main_nav_host"
@@ -25,5 +26,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/main_bottom_navigation"
-        android:theme="@style/MainBottomNavigation" />
+        android:theme="@style/MainBottomNavigation"
+        android:background="#F0F0F0"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,7 @@
 package com.hammersystems.data.menu.storage
 
-import com.hammersystems.domain.model.BannerModel
+import com.hammersystems.domain.model.BannerItemModel
 
 interface BannerStorage {
-    fun getAll(): List<BannerModel>
+    fun getAll(): List<BannerItemModel>
 }
