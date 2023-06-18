@@ -7,4 +7,5 @@
     <string name="meal_label">Some meal</string>
     <string name="meal_description">Some description</string>
     <string name="menu_item_price">Price</string>
+    <string name="menu_category_name">Category</string>
 </resources>

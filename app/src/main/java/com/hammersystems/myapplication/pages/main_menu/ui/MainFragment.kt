@@ -10,10 +10,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.hammersystems.domain.usecases.MenuListLoadUseCase
 import com.hammersystems.myapplication.R
 import com.hammersystems.myapplication.app.App
 import com.hammersystems.myapplication.pages.main_menu.adapters.BannerRecyclerAdapter
+import com.hammersystems.myapplication.pages.main_menu.adapters.MenuCategoryListRecyclerAdapter
 import com.hammersystems.myapplication.pages.main_menu.adapters.MenuListRecyclerAdapter
 import com.hammersystems.myapplication.pages.main_menu.viewmodel.MainMenuViewModel
 import com.hammersystems.myapplication.pages.main_menu.viewmodel.MainMenuViewModelFactory
@@ -36,6 +36,7 @@ class MainFragment : Fragment() {
         val viewModel = ViewModelProvider(this, viewModelFactory)[MainMenuViewModel::class.java]
         val bannerRecyclerView: RecyclerView = view.findViewById(R.id.main_banner_recycler)
         val menuRecyclerView: RecyclerView = view.findViewById(R.id.main_menu_recycler)
+        val categoryRecyclerView: RecyclerView = view.findViewById(R.id.main_menu_category_recycler)
 
 
         bannerRecyclerView.layoutManager =
@@ -46,7 +47,8 @@ class MainFragment : Fragment() {
                     bannerRecyclerView.adapter = null
                 }
                 false -> {
-                    bannerRecyclerView.adapter = BannerRecyclerAdapter(bannerList = bannerItemList,
+                    bannerRecyclerView.adapter = BannerRecyclerAdapter(
+                        bannerList = bannerItemList,
                         bannerClick = { viewModel.menuBannerClick(it) })
                 }
             }
@@ -71,6 +73,18 @@ class MainFragment : Fragment() {
                     ).show()
                 }
             }
+        }
+
+
+        categoryRecyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        viewModel.getMenuCategoryListLiveData().observe(this) { categoryList ->
+            categoryRecyclerView.adapter =
+                MenuCategoryListRecyclerAdapter(categoryList, categoryClick = {
+                    viewLifecycleOwner.lifecycleScope.launch {
+                        viewModel.categoryItemClick(it)
+                    }
+                })
         }
 
         viewLifecycleOwner.lifecycleScope.launch {

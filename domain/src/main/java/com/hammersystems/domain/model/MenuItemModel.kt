@@ -4,5 +4,6 @@ data class MenuItemModel(
     val titleName: String,
     val description: String,
     val imageUrl: String,
-    val price: Int
+    val price: Int,
+    val category: String
 )

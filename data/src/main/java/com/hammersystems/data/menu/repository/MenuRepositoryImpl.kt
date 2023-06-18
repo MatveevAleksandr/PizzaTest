@@ -10,6 +10,6 @@ class MenuRepositoryImpl(private val storage: MenuStorage) : MenuRepository {
     }
 
     override fun loadMenuListByCategory(category: String): MenuStorageModel {
-        TODO("Not yet implemented")
+        return storage.loadMenuListByCategory(category)
     }
 }

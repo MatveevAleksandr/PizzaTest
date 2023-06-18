@@ -1,9 +1,6 @@
 package com.hammersystems.myapplication.di
 
-import com.hammersystems.domain.usecases.MenuBannerClickUseCase
-import com.hammersystems.domain.usecases.MenuBannerLoadUseCase
-import com.hammersystems.domain.usecases.MenuItemClickUseCase
-import com.hammersystems.domain.usecases.MenuListLoadUseCase
+import com.hammersystems.domain.usecases.*
 import com.hammersystems.myapplication.pages.main_menu.viewmodel.MainMenuViewModelFactory
 import dagger.Module
 import dagger.Provides
@@ -15,13 +12,17 @@ class AppModule {
         menuBannerLoadUseCase: MenuBannerLoadUseCase,
         menuBannerClickUseCase: MenuBannerClickUseCase,
         menuListLoadUseCase: MenuListLoadUseCase,
-        menuItemClickUseCase: MenuItemClickUseCase
-    ): MainMenuViewModelFactory{
+        menuItemClickUseCase: MenuItemClickUseCase,
+        categoryListLoadUseCase: MenuCategoryLoadUseCase,
+        categoryItemClickUseCase: MenuCategoryClickUseCase
+    ): MainMenuViewModelFactory {
         return MainMenuViewModelFactory(
             menuBannerLoadUseCase = menuBannerLoadUseCase,
             menuBannerClickUseCase = menuBannerClickUseCase,
             menuListLoadUseCase = menuListLoadUseCase,
-            menuItemClickUseCase = menuItemClickUseCase
+            menuItemClickUseCase = menuItemClickUseCase,
+            categoryListLoadUseCase = categoryListLoadUseCase,
+            categoryItemClickUseCase = categoryItemClickUseCase
         )
     }
 }

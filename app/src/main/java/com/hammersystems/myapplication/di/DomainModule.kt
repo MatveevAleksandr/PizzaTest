@@ -2,10 +2,7 @@ package com.hammersystems.myapplication.di
 
 import com.hammersystems.domain.repository.BannerRepository
 import com.hammersystems.domain.repository.MenuRepository
-import com.hammersystems.domain.usecases.MenuBannerClickUseCase
-import com.hammersystems.domain.usecases.MenuBannerLoadUseCase
-import com.hammersystems.domain.usecases.MenuItemClickUseCase
-import com.hammersystems.domain.usecases.MenuListLoadUseCase
+import com.hammersystems.domain.usecases.*
 import dagger.Module
 import dagger.Provides
 
@@ -29,5 +26,15 @@ class DomainModule {
     @Provides
     fun provideMenuItemClickUseCase(): MenuItemClickUseCase {
         return MenuItemClickUseCase()
+    }
+
+    @Provides
+    fun provideMenuCategoryLoadUseCase(): MenuCategoryLoadUseCase {
+        return MenuCategoryLoadUseCase()
+    }
+
+    @Provides
+    fun provideMenuCategoryClickUseCase(repository: MenuRepository): MenuCategoryClickUseCase {
+        return MenuCategoryClickUseCase(repository)
     }
 }

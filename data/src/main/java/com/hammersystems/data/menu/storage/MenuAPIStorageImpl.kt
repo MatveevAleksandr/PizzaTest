@@ -21,7 +21,15 @@ class MenuAPIStorageImpl : MenuStorage {
     }
 
     override fun loadMenuListByCategory(category: String): MenuStorageModel {
-        TODO("Not yet implemented")
+        val allList = loadMenuList()
+        val newList = mutableListOf<MenuItemModel>()
+        if (allList.isError) return allList
+        allList.menuList.forEach {
+            if (it.category == category) newList.add(it)
+        }
+        return MenuStorageModel(
+            isError = allList.isError, errorMsg = allList.errorMsg, menuList = newList
+        )
     }
 
     private fun convertAPIModelToStorageAnswerModel(apiCall: Response<MenuRetrofitModel>): MenuStorageModel {
@@ -33,7 +41,8 @@ class MenuAPIStorageImpl : MenuStorage {
                     titleName = it.mealName,
                     description = "${it.strIngredient1}, ${it.strIngredient2}, ${it.strIngredient3}, ${it.strIngredient4}, ${it.strIngredient5}",
                     imageUrl = it.imageUrl,
-                    price = it.mealPrice
+                    price = it.mealPrice,
+                    category = it.mealCategory
                 )
             }.toMutableList()
 
