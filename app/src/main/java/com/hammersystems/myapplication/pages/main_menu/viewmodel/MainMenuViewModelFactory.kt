@@ -2,6 +2,7 @@ package com.hammersystems.myapplication.pages.main_menu.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.hammersystems.data.menu.storage.room.MenuRoomStorageImpl
 import com.hammersystems.domain.usecases.*
 
 class MainMenuViewModelFactory(
@@ -10,7 +11,8 @@ class MainMenuViewModelFactory(
     private val menuListLoadUseCase: MenuListLoadUseCase,
     private val menuItemClickUseCase: MenuItemClickUseCase,
     private val categoryListLoadUseCase: MenuCategoryLoadUseCase,
-    private val categoryItemClickUseCase: MenuCategoryClickUseCase
+    private val categoryItemClickUseCase: MenuCategoryClickUseCase,
+    private val menuItemRoomStorage: MenuRoomStorageImpl
 ) : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -20,7 +22,8 @@ class MainMenuViewModelFactory(
             menuListLoadUseCase = menuListLoadUseCase,
             menuItemClickUseCase = menuItemClickUseCase,
             categoryListLoadUseCase = categoryListLoadUseCase,
-            categoryItemClickUseCase = categoryItemClickUseCase
+            categoryItemClickUseCase = categoryItemClickUseCase,
+            menuItemRoomStorage = menuItemRoomStorage
         ) as T
     }
 }

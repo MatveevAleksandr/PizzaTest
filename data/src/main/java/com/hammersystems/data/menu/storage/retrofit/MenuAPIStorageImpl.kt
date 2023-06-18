@@ -1,7 +1,6 @@
-package com.hammersystems.data.menu.storage
+package com.hammersystems.data.menu.storage.retrofit
 
-import com.hammersystems.data.menu.retrofit.MenuRetrofit
-import com.hammersystems.data.menu.retrofit.MenuRetrofitModel
+import com.hammersystems.domain.storage.MenuStorage
 import com.hammersystems.domain.model.MenuItemModel
 import com.hammersystems.domain.model.MenuStorageModel
 import retrofit2.Response
@@ -38,10 +37,12 @@ class MenuAPIStorageImpl : MenuStorage {
         val menuList =
             if (isError || apiCall.body() == null) listOf() else apiCall.body()!!.items.map {
                 MenuItemModel(
+                    id = it.mealId,
                     titleName = it.mealName,
                     description = "${it.strIngredient1}, ${it.strIngredient2}, ${it.strIngredient3}, ${it.strIngredient4}, ${it.strIngredient5}",
                     imageUrl = it.imageUrl,
-                    price = it.mealPrice,
+                    //    прайса нет, пусть его заменит айдишник
+                    price = it.mealId,
                     category = it.mealCategory
                 )
             }.toMutableList()

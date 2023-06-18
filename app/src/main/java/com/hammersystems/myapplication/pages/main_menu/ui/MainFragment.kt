@@ -47,8 +47,7 @@ class MainFragment : Fragment() {
                     bannerRecyclerView.adapter = null
                 }
                 false -> {
-                    bannerRecyclerView.adapter = BannerRecyclerAdapter(
-                        bannerList = bannerItemList,
+                    bannerRecyclerView.adapter = BannerRecyclerAdapter(bannerList = bannerItemList,
                         bannerClick = { viewModel.menuBannerClick(it) })
                 }
             }

@@ -1,5 +1,6 @@
 package com.hammersystems.myapplication.di
 
+import com.hammersystems.data.menu.storage.room.MenuRoomStorageImpl
 import com.hammersystems.domain.usecases.*
 import com.hammersystems.myapplication.pages.main_menu.viewmodel.MainMenuViewModelFactory
 import dagger.Module
@@ -14,7 +15,8 @@ class AppModule {
         menuListLoadUseCase: MenuListLoadUseCase,
         menuItemClickUseCase: MenuItemClickUseCase,
         categoryListLoadUseCase: MenuCategoryLoadUseCase,
-        categoryItemClickUseCase: MenuCategoryClickUseCase
+        categoryItemClickUseCase: MenuCategoryClickUseCase,
+        menuItemRoomStorage: MenuRoomStorageImpl
     ): MainMenuViewModelFactory {
         return MainMenuViewModelFactory(
             menuBannerLoadUseCase = menuBannerLoadUseCase,
@@ -22,7 +24,8 @@ class AppModule {
             menuListLoadUseCase = menuListLoadUseCase,
             menuItemClickUseCase = menuItemClickUseCase,
             categoryListLoadUseCase = categoryListLoadUseCase,
-            categoryItemClickUseCase = categoryItemClickUseCase
+            categoryItemClickUseCase = categoryItemClickUseCase,
+            menuItemRoomStorage = menuItemRoomStorage
         )
     }
 }

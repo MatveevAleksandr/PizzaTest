@@ -1,4 +1,4 @@
-package com.hammersystems.data.menu.storage
+package com.hammersystems.domain.storage
 
 import com.hammersystems.domain.model.MenuStorageModel
 

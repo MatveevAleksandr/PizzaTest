@@ -1,4 +1,4 @@
-package com.hammersystems.data.menu.retrofit
+package com.hammersystems.data.menu.storage.retrofit
 
 import com.google.gson.annotations.SerializedName
 
@@ -7,6 +7,7 @@ data class MenuRetrofitModel(
 )
 
 data class MenuItemRetrofitModel(
+    @SerializedName("idMeal") val mealId: Int,
     @SerializedName("strMealThumb") val imageUrl: String,
     @SerializedName("strMeal") val mealName: String,
     @SerializedName("strIngredient1") val strIngredient1: String = "",
@@ -15,6 +16,4 @@ data class MenuItemRetrofitModel(
     @SerializedName("strIngredient4") val strIngredient4: String = "",
     @SerializedName("strIngredient5") val strIngredient5: String = "",
     @SerializedName("strCategory") val mealCategory: String,
-//    прайса нет, пусть его заменит айдишник
-    @SerializedName("idMeal") val mealPrice: Int
 )
