@@ -2,6 +2,8 @@ package com.hammersystems.myapplication.pages.main_menu.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.hammersystems.data.menu.storage.retrofit.MenuAPIStorageImpl
+import com.hammersystems.data.menu.storage.room.MenuRoomStorageImpl
 import com.hammersystems.domain.model.BannerItemModel
 import com.hammersystems.domain.model.MenuItemModel
 import com.hammersystems.domain.model.MenuStorageModel
@@ -14,13 +16,15 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+
 class MainMenuViewModel(
     private val menuBannerLoadUseCase: MenuBannerLoadUseCase,
     private val menuBannerClickUseCase: MenuBannerClickUseCase,
     private val menuListLoadUseCase: MenuListLoadUseCase,
     private val menuItemClickUseCase: MenuItemClickUseCase,
     private val categoryListLoadUseCase: MenuCategoryLoadUseCase,
-    private val categoryItemClickUseCase: MenuCategoryClickUseCase
+    private val categoryItemClickUseCase: MenuCategoryClickUseCase,
+    private val menuItemRoomStorage: MenuRoomStorageImpl
 ) : ViewModel() {
     private val bannerLiveData = MutableLiveData<List<BannerItemModel>?>()
     private val menuListLiveData = MutableLiveData<MainMenuStateModel>()
@@ -68,14 +72,19 @@ class MainMenuViewModel(
 
     private suspend fun initMenuListBlock() {
         val result = menuListLoadUseCase.execute()
-        val state = convertMenuStorageModelToState(result)
+        val screenState = convertMenuStorageModelToState(result)
         val category = if (result.isError) {
             mutableListOf()
         } else {
             categoryListLoadUseCase.execute(result.menuList)
         }
+
+        if (menuListLoadUseCase.repository.getStorage() is MenuAPIStorageImpl && screenState is MainMenuStateSuccessfulLoad) menuItemRoomStorage.saveMenuStorageItem(
+            screenState.menuItemList
+        )
+
         withContext(Dispatchers.Main) {
-            setMenuListLiveData(state)
+            setMenuListLiveData(screenState)
             setMenuCategoryListLiveData(category)
         }
     }
