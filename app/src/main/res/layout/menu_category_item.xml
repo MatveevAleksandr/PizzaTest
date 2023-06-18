@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/category_card"
     android:layout_width="88dp"
     android:layout_height="32dp"
-    android:backgroundTint="#FFFFFF"
+    android:background="#FFFFFF"
     app:cardCornerRadius="6dp"
     android:layout_marginEnd="8dp"
     app:cardElevation="0dp">
@@ -18,4 +18,4 @@
         android:textColor="#C3C4C9"
         android:textSize="13sp" />
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
